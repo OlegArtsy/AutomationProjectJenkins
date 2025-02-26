@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlegArtsy/AutomationProjectJenkins.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
