@@ -40,7 +40,7 @@ pipeline {
             -H "Content-Type: multipart/form-data" \
             -F "file=@test-results/junit-report.xml" \
             -F "projectKey=SCRUM" \
-            -F "testCycle={\"name\":\"Playwright Tests - ${BUILD_NUMBER}\"}" \
+            -F "testCycle={\"name\":\"Playwright Tests - 20\"}" \
             -F "autoCreateTestCases=true"
         '''
     }
