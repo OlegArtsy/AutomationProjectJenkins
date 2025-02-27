@@ -22,15 +22,15 @@ pipeline {
           npx playwright test
         '''
       }
-      post {
-                always {
-                    junit 'test-results/junit-report.xml'
-                    archiveArtifacts(
-                        artifacts: 'test-results/**/*.png, playwright-report/**/*.png',
-                        allowEmptyArchive: true
-                    )
-                }
-    }
+    //   post {
+    //             always {
+    //                 junit 'test-results/junit-report.xml'
+    //                 archiveArtifacts(
+    //                     artifacts: 'test-results/**/*.png, playwright-report/**/*.png',
+    //                     allowEmptyArchive: true
+    //                 )
+    //             }
+    // }
   }
   stage('Publish to Zephyr Scale') {
             steps {
@@ -39,10 +39,10 @@ pipeline {
                     testCycle: [ 
                         name: "Playwright Automated Tests - ${BUILD_NUMBER}",
                     ],
-                    jiraInstance: 'your-jira-instance', // This should match your Jenkins configuration
+                    jiraInstance: 'artsybashevoleg.atlassian.net', // This should match your Jenkins configuration
                     resultsFormat: 'junit',
                     resultsFile: 'test-results/junit-report.xml',
-                    serverAddress: 'https://your-jira-instance.atlassian.net', // Use your Jira URL
+                    serverAddress: 'https://artsybashevoleg.atlassian.net', // Use your Jira URL
                     autoCreateTestCases: true // Set to false if you want to manually create test cases in Zephyr
                 )
             }
