@@ -36,7 +36,7 @@ pipeline {
             steps {
                 zephyrScale(
                     projectKey: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250ZXh0Ijp7ImJhc2VVcmwiOiJodHRwczovL2FydHN5YmFzaGV2b2xlZy5hdGxhc3NpYW4ubmV0IiwidXNlciI6eyJhY2NvdW50SWQiOiI1NTcwNTg6NzRhOWJkZTMtMjAwMi00MTI2LWFiNDAtZTljYTJkN2FhNzYwIiwidG9rZW5JZCI6IjhiNjY1MTA2LTc2YTAtNGVhNy1iNGY3LWJjODg2ZDljZGY0OSJ9fSwiaXNzIjoiY29tLmthbm9haC50ZXN0LW1hbmFnZXIiLCJzdWIiOiIxZDNlYmMzMC04MjMxLTM1MGMtYTJjOC0wNTczOTk1MWM5ZWMiLCJleHAiOjE3NzIxNjY4MzcsImlhdCI6MTc0MDYzMDgzN30.j_raZMxr55RddCSaP0234JHMFBPAof4COBSNplflqC4',
-                    testCycle: [
+                    testCycle: [ 
                         name: "Playwright Automated Tests - ${BUILD_NUMBER}",
                         description: "Automated tests run on ${BUILD_TIMESTAMP}"
                     ],
