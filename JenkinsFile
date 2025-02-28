@@ -40,7 +40,7 @@ pipeline {
                 -H "Authorization: Bearer ${ZEPHYR_TOKEN}" \
                 -H "Content-Type: multipart/form-data" \
                 -F "file=@test-results/junit-results.xml" \
-                -F "projectKey=YOUR_PROJECT_KEY" \
+                -F "projectKey=SCRUM" \
                 -F "autoCreateTestCycle=true" \
                 -F "testCycleName=Playwright Tests - Build ${BUILD_NUMBER}" \
                 "https://api.zephyrscale.com/v1/automation/executions/junit"
