@@ -15,13 +15,12 @@ pipeline {
       steps {
         sh '''
           npx playwright test --list
-          npx playwright test --reporter=junit
+          npx playwright test --reporter=junit > junit-results.xml
         '''
       }
       post {
                 always {
-                    junit 'playwright-report/results.xml'
-                    archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-report/**/*'
+                    junit 'junit-results.xml'
                 }
     }
   }
