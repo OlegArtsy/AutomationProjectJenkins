@@ -22,15 +22,15 @@ pipeline {
           npx playwright test
         '''
       }
-    //   post {
-    //             always {
-    //                 junit 'test-results/junit-report.xml'
-    //                 archiveArtifacts(
-    //                     artifacts: 'test-results/**/*.png, playwright-report/**/*.png',
-    //                     allowEmptyArchive: true
-    //                 )
-    //             }
-    // }
+      post {
+                always {
+                    junit 'test-results/junit-report.xml'
+                    archiveArtifacts(
+                        artifacts: 'test-results/**/*.png, playwright-report/**/*.png',
+                        allowEmptyArchive: true
+                    )
+                }
+    }
   }
   stage('Publish to Zephyr Scale') {
     steps {
