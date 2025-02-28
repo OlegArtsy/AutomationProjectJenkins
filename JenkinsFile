@@ -10,25 +10,18 @@ pipeline {
         '''
       }
     }
-    stage('help') {
-      steps {
-        sh 'npx playwright test --help'
-      }
-    }
+    
     stage('test') {
       steps {
         sh '''
           npx playwright test --list
-          npx playwright test
+          npx playwright test --reporter=junit
         '''
       }
       post {
                 always {
-                    junit 'test-results/junit-report.xml'
-                    archiveArtifacts(
-                        artifacts: 'test-results/**/*.png, playwright-report/**/*.png',
-                        allowEmptyArchive: true
-                    )
+                    junit 'playwright-report/results.xml'
+                    archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-report/**/*'
                 }
     }
   }
