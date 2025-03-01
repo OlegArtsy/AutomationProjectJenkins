@@ -36,7 +36,7 @@ pipeline {
                 -F "projectKey=SCRUM" \
                 -F "autoCreateTestCycle=true" \
                 -F "testCycleName=Playwright Tests - Build ${BUILD_NUMBER}" \
-                "https://api.zephyrscale.com/v1/automation/executions/junit"
+                "https://api.zephyrscale.smartbear.com/v2/automation/executions/junit"
             """
         }
     }
