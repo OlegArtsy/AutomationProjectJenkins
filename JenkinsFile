@@ -14,14 +14,13 @@ pipeline {
     stage('test') {
       steps {
         sh '''
-          npx playwright test --list
-          npx playwright test --config=playwright.config.js
+          npx playwright test 
           cat junit-results.xml
         '''
       }
       post {
                 always {
-                    junit 'playwright-reports/results.xml'
+                    junit 'playwright-reports/junit-results.xml'
                     archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-report/**/*'
                 }
     }
