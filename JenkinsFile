@@ -15,7 +15,7 @@ pipeline {
       steps {
         sh '''
           npx playwright test 
-        
+          cat junit-results.xml
         '''
       }
       post {
