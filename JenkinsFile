@@ -30,7 +30,7 @@ pipeline {
         withCredentials([string(credentialsId: 'zephyr-api-token', variable: 'ZEPHYR_TOKEN')]) {
                 sh '''
                     curl "https://api.zephyrscale.smartbear.com/v2/automations/executions/junit?projectKey={SCRUM}&autoCreateTestCases=true" \
-                    --header "Authorization: Bearer $ZZEPHYR_TOKEN" \
+                    --header "Authorization: Bearer $ZEPHYR_TOKEN" \
                     --form "file=@playwright-reports/junit-results.xml" \
                     --form "type=application/xml" \
                     --form "testCycle={\"name\": \"jest integration test $(date)\"};type=application/json"
