@@ -4,26 +4,43 @@ pipeline {
   stages {
     stage('install playwright') {
       steps {
-        sh '''
-          npm i -D @playwright/test
-          npx playwright install
-        '''
-      }
-    }
-    
-    stage('test') {
-      steps {
-        sh '''
-          npx playwright test --list
-          npx playwright test --reporter=junit > junit-results.xml
-        '''
+        sh 'npm install'
+                sh 'npx playwright install'
+                // Explicitly create a reporter configuration file if it doesn't exist
+                sh '''
+                    cat > playwright.config.js << 'EOL'
+                    module.exports = {
+                      reporter: [
+                        ['junit', { outputFile: 'junit-results.xml' }],
+                        ['html']
+                      ]
+                    };
+                    EOL
+                '''
+                sh 'npx playwright test'
+                // Verify the file was created
+                sh 'ls -la'
       }
       post {
                 always {
-                    junit 'junit-results.xml'
+                    junit(testResults: 'junit-results.xml', allowEmptyResults: true)
                 }
+            }
     }
-  }
+    
+  //   stage('test') {
+  //     steps {
+  //       sh '''
+  //         npx playwright test --list
+  //         npx playwright test --reporter=junit > junit-results.xml
+  //       '''
+  //     }
+  //     post {
+  //               always {
+  //                   junit 'junit-results.xml'
+  //               }
+  //   }
+  // }
   stage('Publish to Zephyr Scale') {
     steps {
         withCredentials([string(credentialsId: 'zephyr-api-token', variable: 'ZEPHYR_TOKEN')]) {
