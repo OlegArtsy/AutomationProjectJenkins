@@ -35,7 +35,7 @@ pipeline {
         -F \"file=@playwright-reports/junit-results.xml\" \\
         -F \"projectKey=SCRUM\" \\
         -F \"autoCreateTestCycle=true\" \\
-        -F \"testCycleName=Playwright Tests - Build ${BUILD_NUMBER}\" \\
+        -F \"testCycleName=Playwright Tests - Build \${BUILD_NUMBER}\" \\
         \"https://api.zephyrscale.smartbear.com/v2/automations/executions/junit\"
     """
         }
