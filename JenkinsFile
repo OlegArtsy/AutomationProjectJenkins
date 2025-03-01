@@ -15,7 +15,7 @@ pipeline {
       steps {
         sh '''
           npx playwright test --list
-          npx playwright test --defineConfig=playwright.config.js
+          npx playwright test --config=playwright.config.js
           cat junit-results.xml
         '''
       }
