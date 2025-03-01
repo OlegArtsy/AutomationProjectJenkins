@@ -28,15 +28,15 @@ pipeline {
   stage('Publish to Zephyr Scale') {
     steps {
         withCredentials([string(credentialsId: 'zephyr-api-token', variable: 'ZEPHYR_TOKEN')]) {
-            sh '''
-                            curl -v -X POST \\
-                            -H "Authorization: Bearer ${ZEPHYR_TOKEN}" \\
-                            -F projectKey=SCRUM \\
-                            -F autoCreateTestCycle=true \\
-                            -F "testCycleName=Playwright Tests - Build ${BUILD_NUMBER}" \\
-                            -F "file=@playwright-reports/junit-results.xml" \\
-                            "https://api.zephyrscale.smartbear.com/v2/automations/executions/junit"
-            '''
+                sh '''
+                    curl -v \\
+                    -H "Authorization: Bearer ${ZEPHYR_TOKEN}" \\
+                    -F projectKey=SCRUM \\
+                    -F autoCreateTestCycle=true \\
+                    -F "testCycleName=Playwright Tests - Build ${BUILD_NUMBER}" \\
+                    -F "file=@playwright-reports/junit-results.xml" \\
+                    "https://api.zephyrscale.smartbear.com/v2/automations/executions/junit"
+                '''
         }
     }
 }
