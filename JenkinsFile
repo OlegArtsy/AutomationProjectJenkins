@@ -20,8 +20,8 @@ pipeline {
       }
       post {
                 always {
-                    junit 'playwright-reports/junit-results.xml'
-                    archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-report/**/*'
+                    junit allowEmptyResults: true, testResults: 'junit-results.xml'
+                    archiveArtifacts artifacts: 'junit-results.xml', allowEmptyArchive: true
                 }
     }
   }
