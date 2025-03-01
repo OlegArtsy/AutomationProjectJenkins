@@ -29,15 +29,14 @@ pipeline {
     steps {
         withCredentials([string(credentialsId: 'zephyr-api-token', variable: 'ZEPHYR_TOKEN')]) {
             sh """
-        curl -X POST \\
-        -H \"Authorization: Bearer \${ZEPHYR_TOKEN}\" \\
-        -H \"Content-Type: multipart/form-data\" \\
-        -F \"file=@playwright-reports/junit-results.xml\" \\
-        -F \"projectKey=SCRUM\" \\
-        -F \"autoCreateTestCycle=true\" \\
-        -F \"testCycleName=Playwright Tests - Build \${BUILD_NUMBER}\" \\
-        \"https://api.zephyrscale.smartbear.com/v2/automations/executions/junit\"
-    """
+                curl -X POST \
+                -H "Authorization: Bearer ${ZEPHYR_TOKEN}" \
+                -H "Content-Type: multipart/form-data" \
+                -F "file=@playwright-reports/junit-results.xml" \
+                -F "autoCreateTestCycle=true" \
+                -F "testCycleName=Playwright Tests - Build ${BUILD_NUMBER}" \
+                "https://api.zephyrscale.smartbear.com/v2/automations/executions/junit"
+            """
         }
     }
 }
