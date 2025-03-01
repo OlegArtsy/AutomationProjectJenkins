@@ -32,7 +32,7 @@ pipeline {
                 curl -X POST \
                 -H "Authorization: Bearer ${ZEPHYR_TOKEN}" \
                 -H "Content-Type: multipart/form-data" \
-                -F "file=@test-results/junit-results.xml" \
+                -F "file=@playwright-reports/junit-results.xml" \
                 -F "projectKey=SCRUM" \
                 -F "autoCreateTestCycle=true" \
                 -F "testCycleName=Playwright Tests - Build ${BUILD_NUMBER}" \
