@@ -33,7 +33,7 @@ pipeline {
                     --header "Authorization: Bearer $ZEPHYR_TOKEN" \
                     --form "file=@playwright-reports/junit-results.xml" \
                     --form "type=application/xml" \
-                    --form "testCycle={\"name\": \"jest integration test $(date)\"};type=application/json"
+                    --form "testCycle={\"name\": \"jest integration test\"};"
                 '''
         }
     }
